@@ -2,6 +2,18 @@ import puppeteer from "puppeteer";
 import fs from "fs/promises";
 import { JSDOM } from "jsdom";
 
+/*
+Code is clean and easy to follow with clear separation of concerns.. that awesome there...
+Good use of error handling with try catch
+recommendations:
+  > add a method to verify that the url is valid currently you just verifying that it is is valid string. Fix: use new URL()
+  > Extracted href and src may be relative as you can see from you output some links are not complete. Fix: Resolve relative links against the base URL
+  > add try/finally to scrape() and close the browser on the finally just in case
+  > the output file over writes the available file, if this is intentional it's fine but consider creating new files instead incase user still requires scraped info from different files.
+
+overall your scraper is well designed and easy to understand. cheers
+*/
+
 class WebScraper {
   constructor(url) {
     this.url = url;
